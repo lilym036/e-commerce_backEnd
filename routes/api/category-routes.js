@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   return res.json(userData);
 });
 
-router.put('/:category_id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   const userDataData = await Category.update(
     {
@@ -41,7 +41,7 @@ router.put('/:category_id', async (req, res) => {
 
 )});
 
-router.delete('/:category_id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   const userData = await Category.destroy({
     where: {
