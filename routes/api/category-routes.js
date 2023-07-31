@@ -3,26 +3,49 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
+  const userData = await Category.findAll();
+  return res.json(userData);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
+const userData = await Category.findByPk(req.params.id);
+return res.json(userData);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  const userDataData = await Category.create(req.body);
+  return res.json(userData);
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:category_id', async (req, res) => {
   // update a category by its `id` value
-});
+  const userDataData = await Category.update(
+    {
+      category_name: req.body.category_name,
+    },
+    {
+      where: {
+        category_id: req.params.category_id,
+      },
+    }
 
-router.delete('/:id', (req, res) => {
+)});
+
+router.delete('/:category_id', async (req, res) => {
   // delete a category by its `id` value
+  const userData = await Category.destroy({
+    where: {
+      category_id_id: req.params.category_id,
+    },
+  });
+
+  return res.json(userData);
 });
 
 module.exports = router;
