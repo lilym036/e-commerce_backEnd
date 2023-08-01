@@ -41,7 +41,9 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       },
     }
-  );
+  ).catch((err) => {
+    res.json(err);
+  });
   return res.json(tagData);
 });
 
